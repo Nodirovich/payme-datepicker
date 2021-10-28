@@ -1,0 +1,61 @@
+$accent: #0d6efd;
+
+:host {
+  position: relative;
+}
+
+.time__input {
+  width: 100%;
+  margin-top: 0;
+  border-radius: 5px 0 0 5px;
+  padding: 4px 8px;
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+}
+
+.hidden {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.time__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 256px;
+  width: 70px;
+  overflow-y: auto;
+  box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%),
+  0 4px 5px 0 rgb(0 0 0 / 14%),
+  0 1px 10px 0 rgb(0 0 0 / 12%);
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2099 !important;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  li {
+    padding: 0 5px;
+    cursor: pointer;
+    &:hover {
+      background: $accent;
+      color: #fff;
+    }
+    &.active {
+      color: #fff;
+      background: $accent;
+    }
+  }
+}

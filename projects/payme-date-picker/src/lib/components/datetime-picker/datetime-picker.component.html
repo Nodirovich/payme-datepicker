@@ -1,0 +1,19 @@
+<div class="datetimepicker" [class.timer]="isTimer">
+  <label>{{ label }}</label>
+  <app-time-picker
+    *ngIf="isTimer"
+    class="timepicker"
+    [timeControl]="control"
+    [minTime]="minDate"
+    [sameDate]="isSameDate"
+    (changed)="selectedTime($event)"
+  ></app-time-picker>
+
+  <app-date-picker
+    class="datepicker"
+    [control]="control"
+    [minDate]="minDate"
+    (selected)="selectedDate($event)"
+    (clear)="onClear()"
+  ></app-date-picker>
+</div>

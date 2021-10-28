@@ -1,0 +1,30 @@
+.__input {
+  background: #fff;
+  width: 100%;
+  padding: 4px 8px;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: inherit;
+}
+
+.clear__block {
+  position: relative;
+}
+
+.enable-button {
+  cursor: pointer;
+  position: absolute;
+  right: 4px;
+  top: -24px;
+  z-index: 0;
+}
+
+.footer {
+  padding: 5px;
+  border-top: 1px solid #eee;
+  .btn {
+    background: var(--main-color);
+    border-color: var(--main-color);
+    color: #fff;
+  }
+}

@@ -1,0 +1,24 @@
+<div class="datepicker" [class.datepicker-time]="isTimer">
+  <app-datetime-picker
+    class="datepicker__block"
+    label="Дата начала"
+    [class.left]="!isTimer"
+    [control]="control"
+    [isTimer]="isTimer"
+    (changeDateTime)="updateControl($event)"
+    (clear)="onClear('control')"
+  ></app-datetime-picker>
+
+  <app-datetime-picker
+    *ngIf="rangeControl"
+    class="datepicker__block"
+    label="Дата конца"
+    [class.right]="!isTimer"
+    [control]="rangeControl"
+    [isTimer]="isTimer"
+    [isSameDate]="isSameDate"
+    [minDate]="minDate"
+    (changeDateTime)="updateRangeControl($event)"
+    (clear)="onClear('rangeControl')"
+  ></app-datetime-picker>
+</div>

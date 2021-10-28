@@ -1,0 +1,18 @@
+<input
+  class="time__input __input"
+  #inputRef
+  type="text"
+  placeholder="--:--"
+  autocomplete="off"
+  [attr.mask]="mask"
+  [formControl]="maskControl"
+  (blur)="onBlur($event.target)"
+  (keydown)="onKeyDown()"
+  (click)="showTimeList()"
+/>
+
+<ul class="time__list" #timeRef>
+  <li *ngFor="let time of timeList" (click)="selectedTime(time.value)" [class.active]="time.title === maskControl.value">
+    {{ time.title }}
+  </li>
+</ul>

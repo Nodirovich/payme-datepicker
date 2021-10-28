@@ -1,0 +1,32 @@
+<input
+  class="__input"
+  ngbDatepicker
+  readonly
+  #picker="ngbDatepicker"
+  [value]="control.value | datepicker"
+  [attr.startDate]="startDate"
+  [attr.minDate]="minDate | datepicker: true"
+  [attr.footerTemplate]="footerTemplate"
+  (dateSelect)="onSelect($event)"
+  (click)="picker.open()"
+/>
+
+<div class="clear__block">
+  <i
+    class="enable-button fa fa-times-circle"
+    *ngIf="control.value"
+    (click)="onClear()"
+  ></i>
+</div>
+
+<div class="field-error" *ngIf="control.dirty && control.errors?.length">
+  <span *ngFor="let error of control.errors | controlErrors">
+    {{ error }}
+  </span>
+</div>
+
+<ng-template #footerTemplate>
+  <div class="footer">
+    <button class="btn" (click)="todayHandler(picker)">Сегодня</button>
+  </div>
+</ng-template>

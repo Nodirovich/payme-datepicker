@@ -1,0 +1,41 @@
+:host {
+  width: inherit;
+  &.left .datepicker {
+    border-radius: 5px 0 0 5px;
+  }
+  &.right .datepicker {
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+.datetimepicker {
+  display: flex;
+  flex-direction: column;
+
+  &.timer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    label {
+      flex-basis: 100%;
+    }
+
+    .datepicker {
+      width: 67%;
+      border-radius: 0 5px 5px 0;
+      margin-left: -1px;
+    }
+
+    .timepicker {
+      width: 33%;
+    }
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--main-font-color);
+    margin-bottom: 5px;
+    position: relative;
+  }
+}
