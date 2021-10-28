@@ -16,8 +16,10 @@ export interface IUpdate {
 })
 export class PaymeDatePickerComponent {
   @Input() isTimer = false;
-  @Input() control: FormControl = new FormControl();
-  @Input() rangeControl: FormControl = new FormControl();
+  @Input() control: FormControl;
+  @Input() controlLabel: string;
+  @Input() rangeControl: FormControl;
+  @Input() rangeControlLabel: string;
 
   minDate: number;
   isSameDate: boolean;

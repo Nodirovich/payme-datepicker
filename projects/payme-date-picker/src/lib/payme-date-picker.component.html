@@ -1,7 +1,7 @@
 <div class="datepicker" [class.datepicker-time]="isTimer">
   <app-datetime-picker
     class="datepicker__block"
-    label="Дата начала"
+    [label]="controlLabel"
     [class.left]="!isTimer"
     [control]="control"
     [isTimer]="isTimer"
@@ -12,7 +12,7 @@
   <app-datetime-picker
     *ngIf="rangeControl"
     class="datepicker__block"
-    label="Дата конца"
+    [label]="rangeControlLabel"
     [class.right]="!isTimer"
     [control]="rangeControl"
     [isTimer]="isTimer"

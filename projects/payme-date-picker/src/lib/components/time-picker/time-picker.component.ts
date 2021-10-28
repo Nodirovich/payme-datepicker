@@ -38,7 +38,6 @@ export class TimePickerComponent implements OnInit, OnChanges {
 
   private TIMES: ITime[] = [];
   timeList: ITime[] = [];
-  mask = 'Hh:m0';
 
   value$: Observable<string>;
   isClick = true;

@@ -15,6 +15,7 @@ import {
   NgbDate,
   NgbDatepickerI18n,
   NgbDatepickerI18nDefault,
+  NgbDateStruct,
   NgbInputDatepicker,
 } from '@ng-bootstrap/ng-bootstrap';
 import { DateType, getDate } from '../../utils';
@@ -45,7 +46,7 @@ export class DatePickerComponent implements OnInit, OnDestroy {
   @Output()
   clear = new EventEmitter();
   @Output() selected = new EventEmitter();
-  @Input() startDate: number;
+  @Input() startDate: NgbDate;
   @Input() minDate: number;
   @Input() control = new FormControl();
 

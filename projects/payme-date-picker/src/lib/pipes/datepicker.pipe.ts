@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Pipe({ name: 'datepicker', pure: false })
 export class DatepickerPipe implements PipeTransform {
-  transform(value: number, isNgb = false) {
+  transform(value: number, isNgb = false): NgbDateStruct | any {
     if (!value) return '';
 
     const dateVal = new Date(value);
