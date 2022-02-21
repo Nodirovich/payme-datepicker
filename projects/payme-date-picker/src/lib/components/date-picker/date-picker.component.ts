@@ -13,6 +13,7 @@ import { FormControl } from '@angular/forms';
 import {
   NgbCalendar,
   NgbDate,
+  NgbDateParserFormatter,
   NgbDatepickerI18n,
   NgbDatepickerI18nDefault,
   NgbDateStruct,
@@ -27,7 +28,39 @@ export interface IDatePicker {
   month: number;
   year: number;
 }
+@Injectable()
+export class CustomDateParserFormatter extends NgbDateParserFormatter {
+  readonly DELIMITER = '.';
 
+  parse(value: string): NgbDateStruct | null {
+    if (value) {
+      const date = value.split(this.DELIMITER);
+      return {
+        day: parseInt(date[0], 10),
+        month: parseInt(date[1], 10),
+        year: parseInt(date[2], 10),
+      };
+    }
+    return null;
+  }
+
+  format(date: NgbDateStruct | null): string {
+    if (date === null) return '';
+
+    const { day, month, year } = date;
+    return (
+      this.prepare(day) +
+      this.DELIMITER +
+      this.prepare(month) +
+      this.DELIMITER +
+      year
+    );
+  }
+
+  prepare(num: number): string {
+    return num < 10 ? '0' + num : num.toString();
+  }
+}
 @Injectable()
 export class CustomDatepickerI18 extends NgbDatepickerI18nDefault {
   getMonthShortName(month: number): string {
@@ -39,7 +72,10 @@ export class CustomDatepickerI18 extends NgbDatepickerI18nDefault {
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss'],
-  providers: [{ provide: NgbDatepickerI18n, useClass: CustomDatepickerI18 }],
+  providers: [
+    { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18 },
+    { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter },
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerComponent implements OnInit, OnDestroy {
@@ -72,6 +108,7 @@ export class DatePickerComponent implements OnInit, OnDestroy {
 
   todayHandler(picker: NgbInputDatepicker): void {
     this.onSelect(this.today);
+    picker.writeValue(this.today);
     picker.close();
   }
 

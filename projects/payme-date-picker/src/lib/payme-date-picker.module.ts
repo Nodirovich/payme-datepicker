@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgbDatepickerModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { DatetimePickerComponent } from './components/datetime-picker/datetime-picker.component';
@@ -21,8 +19,6 @@ import { NgxMaskModule } from 'ngx-mask';
     ControlErrosPipe,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
